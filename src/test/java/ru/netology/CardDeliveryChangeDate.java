@@ -35,7 +35,7 @@ public class CardDeliveryChangeDate {
         $$("button").find(exactText("Запланировать")).click();
         $("[data-test-id='replan-notification']").shouldBe(appear);
         $$("button").find(exactText("Перепланировать")).click();
-        $("[data-test-id='notification'] .notification__content").shouldHave(
-                text("Встреча успешно забронирована на " + info.getDateTwo()));
+        $("[data-test-id='success-notification']").shouldBe(appear);
+        $("[data-test-id='success-notification']").shouldHave(text(info.getDateTwo()));
     }
 }
