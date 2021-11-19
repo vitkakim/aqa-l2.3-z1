@@ -29,6 +29,7 @@ public class CardDeliveryChangeDate {
         $("[data-test-id='agreement'] .checkbox__box").click();
         $$("button").find(exactText("Запланировать")).click();
         $("[data-test-id='success-notification']").shouldBe(appear);
+        $("[data-test-id='success-notification']").shouldHave(text(info.getDateOne()));
         $("[data-test-id='success-notification'] .icon_name_close").click();
         $("[data-test-id='date'] input").doubleClick().sendKeys(Keys.BACK_SPACE);
         $("[data-test-id='date'] input").setValue(info.getDateTwo());
