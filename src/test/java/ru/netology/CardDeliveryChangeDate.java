@@ -1,8 +1,8 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.Keys;
 import ru.netology.registration.RegistrationInfo;
 import ru.netology.utilits.DataGenerator;
@@ -13,9 +13,19 @@ import static com.codeborne.selenide.Selenide.*;
 public class CardDeliveryChangeDate {
     RegistrationInfo info;
 
+    @BeforeAll
+    static void setUpAll() {
+        SelenideLogger.addListener("allure", new AllureSelenide());
+    }
+
     @BeforeEach
-    void setUpAll() {
+    void setUp() {
         info = DataGenerator.Registration.generateInfo("ru");
+    }
+
+    @AfterAll
+    static void tearDownAll() {
+        SelenideLogger.removeListener("allure");
     }
 
     @Test
